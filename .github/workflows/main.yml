@@ -1,0 +1,33 @@
+name: DialfreashApp CI/CD
+
+on:
+  push:
+    branches: [ main, master ] # Se activa al subir a estas ramas
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Instalar dependencias
+        run: npm install --legacy-peer-deps
+
+      - name: 🧪 Ejecutar Pruebas Unitarias
+        run: npm test # Aquí se ejecutan tus archivos .test.jsx
+
+      - name: 🚀 Configurar EAS (Expo Application Services)
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }} # Debes crear este secreto en GitHub
+
+      - name: 🛠 Crear Build de Android (APK)
+        run: eas build --platform android --profile preview --non-interactive
