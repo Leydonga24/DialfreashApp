@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Suite de Validación Estructural - Dialfreash Validación de MyButton: Debe renderizar el título correctamente 1`] = `null`;
+
+exports[`Suite de Validación Estructural - Dialfreash Validación de MyInput: Debe aceptar valores de texto 1`] = `null`;

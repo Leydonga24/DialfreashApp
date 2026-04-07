@@ -1,31 +1,38 @@
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, Text, TextInput, StyleSheet, KeyboardTypeOptions } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-
-export default function TabTwoScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
-    </View>
-  );
+interface ButtonProps {
+  title: string;
+  onPress: () => void;
+  color?: string;
 }
 
+export const MyButton = ({ title, onPress, color = '#2e7d32' }: ButtonProps) => (
+  <TouchableOpacity style={[styles.btn, { backgroundColor: color }]} onPress={onPress}>
+    <Text style={styles.btnText}>{title}</Text>
+  </TouchableOpacity>
+);
+
+interface InputProps {
+  placeholder: string;
+  value: string;
+  onChangeText: (text: string) => void;
+  keyboardType?: KeyboardTypeOptions;
+}
+
+export const MyInput = ({ placeholder, value, onChangeText, keyboardType = 'default' }: InputProps) => (
+  <TextInput 
+    style={styles.input}
+    placeholder={placeholder}
+    value={value}
+    onChangeText={onChangeText}
+    keyboardType={keyboardType}
+    placeholderTextColor="#999"
+  />
+);
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+  btn: { padding: 15, borderRadius: 8, alignItems: 'center', marginVertical: 10 },
+  btnText: { color: 'white', fontWeight: 'bold', fontSize: 16 },
+  input: { borderBottomWidth: 1, borderColor: '#ccc', padding: 10, marginVertical: 8, fontSize: 16 },
 });
