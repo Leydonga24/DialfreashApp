@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Producto } from '../types';
+import { Producto } from '../../types';
 
 // URL de tu API (donde corre tu backend vinculado a Oracle)
 const API_URL = 'http://tu-ip-servidor:3000/api/productos';

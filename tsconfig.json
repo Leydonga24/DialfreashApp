@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "src/tests/Validation.test.jsx", "src/components/MyComponents.jsx", "src/components/Button.jsx"  ]
+, "tests/Validation.test.jsx", "src/components/MyComponents.jsx", "src/components/Button.jsx"  ]
 }
