@@ -11,7 +11,7 @@ jobs:
       - name: 🏗 Checkout repo
         uses: actions/checkout@v4
 
-      - name: ⚙️ Configurar Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -31,3 +31,5 @@ jobs:
 
       - name: 🛠 Crear Build de Android (APK)
         run: eas build --platform android --profile preview --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }} # Asegúrate de que el token esté disponible aquí

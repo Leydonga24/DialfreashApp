@@ -1,0 +1,2 @@
+build/** linguist-detectable=false
+web-build/** linguist-detectable=false
